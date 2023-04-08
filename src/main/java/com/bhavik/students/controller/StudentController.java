@@ -3,6 +3,7 @@ package com.bhavik.students.controller;
 
 import com.bhavik.students.model.Car;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -28,6 +29,13 @@ public class StudentController {
         carList.add(new Car("i20", "Petrol"));
         model.addAttribute("carList", carList);
         return  "cars";
+    }
+
+    @GetMapping("/users")
+    public String showUsers(Model model){
+        String name = "Bhavik";
+        model.addAttribute("username", name);
+        return "users";
     }
 
 
