@@ -27,6 +27,7 @@ public class StudentController {
         carList.add(new Car("Alto", "CNG"));
         carList.add(new Car("i20", "Petrol"));
         model.addAttribute("carList", carList);
+        return  "cars";
     }
 
 
