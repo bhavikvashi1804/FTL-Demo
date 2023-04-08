@@ -2,6 +2,9 @@ package com.bhavik.students.controller;
 
 
 import com.bhavik.students.model.Car;
+import com.bhavik.students.model.Student;
+import com.bhavik.students.service.StudentService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
@@ -16,6 +19,9 @@ import java.util.List;
 @Controller
 @RequestMapping(value = "students")
 public class StudentController {
+
+    @Autowired
+    StudentService studentService;
 
     @GetMapping("/home")
     public String showHomePage(){
@@ -36,6 +42,13 @@ public class StudentController {
         String name = "Bhavik";
         model.addAttribute("username", name);
         return "users";
+    }
+
+    @GetMapping("/students")
+    public String showStudents(Model model){
+        List<Student> students = studentService.getStudentList();
+        model.addAttribute("students", students);
+        return "students";
     }
 
 
